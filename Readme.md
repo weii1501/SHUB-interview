@@ -21,7 +21,7 @@ git clone https://github.com/weii1501/SHUB-test.git
 
 2. Di chuyển vào thư mục task1
 ```bash
-cd SHUB-test/task1
+cd SHUB-interview/task1
 ```
 
 3. cài đặt các dep**end**encies

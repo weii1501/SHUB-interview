@@ -8,6 +8,7 @@ import "reflect-metadata";
 import swaggerOptions from "./swaggerOptions";
 import swaggerUi from 'swagger-ui-express';
 import swaggerJsdoc from 'swagger-jsdoc';
+import { errorHandler } from "./middlewares/errorHandler";
 
 
 const app = express();
@@ -38,14 +39,15 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 });
 
 // handling errors
-app.use((error: any, req: Request, res: Response, next: NextFunction) => {
-  const statusCode = error.status || 500;
-  return res.status(statusCode).json({
-    status: "error",
-    code: statusCode, 
-    message: error.message || 'Internal Server Error',
-  });
-});
+// app.use((error: any, req: Request, res: Response, next: NextFunction) => {
+//   const statusCode = error.status || 500;
+//   return res.status(statusCode).json({
+//     status: "error",
+//     code: statusCode, 
+//     message: error.message || 'Internal Server Error',
+//   });
+// });
+app.use(errorHandler)
 
 export default app;
 
