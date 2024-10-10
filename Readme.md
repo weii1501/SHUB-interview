@@ -99,18 +99,9 @@ Upload file: client upload .xlsx file:
 Truy vấn: Client truyền (giờ bắt đầu) - (giờ kết thúc) và trả về kết quả dựa theo file gần nhất người dùng upload:
 
 - Api: http://localhost:3000/v1/api/files/get-data
-- các query trong api (định dạng ***'dd/MM/yyyy HH:mm:ss'***): **start** và **end**
-- Trường hợp 1: Không có **start** và **end** -> lấy về tất cả dữ liệu trong file report
-![Trường hợp 1](./task1/docs/images/api2_task1_1.png)
+- các query trong api là 2 tham số bắt buộc (định dạng ***'dd/MM/yyyy HH:mm:ss'***): **start** và **end**
 - Trường hợp 2: có **start** và **end** -> lấy về tất cả dữ liệu trong file report bắt đầu bằng **start** và kết thúc bằng **end**
 ![Trường hợp 2](./task1/docs/images/api2_task1_2.png)
-- Trường hợp 3: chỉ có **start** -> lấy về tất cả dữ liệu trong file report sau **start**
-![Trường hợp 3](./task1/docs/images/api2_task1_3.png)
-- Trường hợp 4: chỉ có **end** -> lấy về tất cả dữ liệu trong file report trước **end**
-![Trường hợp 4](./task1/docs/images/api2_task1_4.png)
-- Trường hợp 5: khi **start** và **end** gửi để api không đúng định dạng
-![Trường hợp 5.1](./task1/docs/images/api2_task1_5.1.png)
-![Trường hợp 5.2](./task1/docs/images/api2_task1_5.2.png)
 
 
 # TASK 3

@@ -38,12 +38,14 @@ const filesRouter = express.Router();
 filesRouter.route("/get-data").get(
     query("start")
         .isString()
-        .optional()
+        .notEmpty()
+        .withMessage('start: không được để trống')
         .matches(dateFormaterRegex)
         .withMessage('start: thời gian phải có định dạng HH:mm:ss'),
     query("end")
         .isString()
-        .optional()
+        .notEmpty()
+        .withMessage('end: không được để trống')
         .matches(dateFormaterRegex)
         .withMessage('end: thời gian phải có định dạng HH:mm:ss'),
     validationErrorHandler,
