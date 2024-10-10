@@ -4,7 +4,7 @@ import { validationErrorHandler } from "../../middlewares/validationErrorHandler
 import FileController from "../../controllers/file.controller";
 import { asyncHandler } from "../../helper/asyncHandler";
 
-const dateFormaterRegex = /^\d{2}\/\d{2}\/\d{4} \d{2}:\d{2}:\d{2}$/;
+const dateFormaterRegex = /^([0-1]\d|2[0-3]):[0-5]\d:[0-5]\d$/;
 
 const filesRouter = express.Router();
 
@@ -40,12 +40,12 @@ filesRouter.route("/get-data").get(
         .isString()
         .optional()
         .matches(dateFormaterRegex)
-        .withMessage('start: thời gian phải có định dạng dd/MM/yyyy HH:mm:ss'),
+        .withMessage('start: thời gian phải có định dạng HH:mm:ss'),
     query("end")
         .isString()
         .optional()
         .matches(dateFormaterRegex)
-        .withMessage('end: thời gian phải có định dạng dd/MM/yyyy HH:mm:ss'),
+        .withMessage('end: thời gian phải có định dạng HH:mm:ss'),
     validationErrorHandler,
     asyncHandler(FileController.getData_v2)
 );

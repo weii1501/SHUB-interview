@@ -2,7 +2,7 @@ import ExcelJS from 'exceljs';
 import { format } from 'date-fns';
 import axios from 'axios';
 
-const replaceKeys = {
+export const replaceKeys = {
     '1': 'serialNumber',
     '2': 'date',
     '3': 'time',
@@ -46,10 +46,6 @@ export const readExcelFile = async (url: string): Promise<ExcelDataInterface[]> 
                     obj[replaceKeys[key]] = rowValues[key] ? rowValues[key] : null;
                 }
 
-                const dateString = `${obj['date'].split('/').reverse().join('-')}T${obj['time']}`;
-                obj['createAt'] = format(new Date(dateString), 'dd/MM/yyyy HH:mm:ss').toString();
-                delete obj['date'];
-                delete obj['time'];
                 data.push(obj);
             }
 
