@@ -9,7 +9,7 @@ export const replaceKeys = {
     '4': 'station',
     '5': 'pumpColumn',
     '6': 'product',
-    '7': 'quantity',
+    '7': 'quantity',    
     '8': 'unitPrice',
     '9': 'totalAmountVnd',
     '10': 'paymentStatus',
@@ -28,7 +28,6 @@ export interface ExcelDataInterface {
 
 
 export const readExcelFile = async (url: string): Promise<ExcelDataInterface[]> => {
-
     const workbook = new ExcelJS.Workbook();
     await workbook.xlsx.readFile(url);
     const data: { [key: string]: any }[] = [];
