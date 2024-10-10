@@ -16,7 +16,7 @@
 1. Clone bài test sử dụng git
 
 ```bash
-git clone https://github.com/weii1501/SHUB-test.git
+git clone [https://github.com/weii1501/SHUB-test.git](https://github.com/weii1501/SHUB-interview.git)
 ```
 
 2. Di chuyển vào thư mục task1
