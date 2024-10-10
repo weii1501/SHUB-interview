@@ -82,7 +82,8 @@ docker-compose down
 - `.dockerignore`: Lists the files and directories to be ignored when building the Docker image. -->
 
 ## DEMO
-Bạn có thể import file postman để kiểm tra các api mà tôi đã xây dựng: ***./task1/SHUB.postman_collection.json***
+- Bạn có thể import file postman để kiểm tra các api mà tôi đã xây dựng: ***./task1/SHUB.postman_collection.json***
+- Bạn cũng có thể thực hiện việc kiểm tra các api bằng swagger: http://localhost:3000/api-docs/
 ### Yêu cầu 1: 
 Upload file: client upload .xlsx file:
 - Api: http://localhost:3000/v1/api/files/upload/
@@ -145,7 +146,7 @@ Truy vấn: Client truyền (giờ bắt đầu) - (giờ kết thúc) và trả
    - `PumpID` (Khóa ngoại tham chiếu đến Trụ bơm)
    - `StationID` (Khóa ngoại tham chiếu Trạm xăng)
    - `GoodsID` (Khóa ngoại tham chiêu Hàng hóa)
-   
+
    - Số lượng (`Quantity`)
    - Đơn giá (`UnitPrice`)
    - Giá trị giao dịch (`TotalValue`)

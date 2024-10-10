@@ -4,7 +4,8 @@ import path from "path";
 
 
 class FileServiceClass {
-    async getData_v2(start: any, end: any, largestFile: any): Promise<ExcelDataInterface[]> {
+    async getData_v2(query: any, largestFile: any): Promise<ExcelDataInterface[]> {
+        const { start, end } = query
         const URL = path.join(__dirname, '../../uploads', largestFile);
         const data = await readExcelFile(URL);
         if (!start && !end) {

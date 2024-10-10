@@ -1,5 +1,5 @@
 import FileService from "../service/file.service";
-import { NextFunction, Request, Response } from "express";
+import { NextFunction, query, Request, Response } from "express";
 import Busboy from 'busboy';
 import fs from 'fs';
 import path from 'path';
@@ -7,11 +7,16 @@ import { validateExcelFile } from "../utils/validateExcelFile";
 import { Created, SuccessResponse } from "../core/success.response";
 import { BadRequestError, ServerError } from "../core/error.response";
 
+interface FileQueryDto {
+    start: string;
+    end: string
+}
+
 
 class FileControllerClass {
 
     async uploadFile(req: Request, res: Response, next: NextFunction): Promise<void> {
-        const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50 MB
+        const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50 MB$
         const busboy = Busboy({
             headers: req.headers,
             limits: {
@@ -123,7 +128,6 @@ class FileControllerClass {
     }
 
     async getData_v2(req: Request, res: Response): Promise<void> {
-        const { start, end } = req.query;
         try {
             // Read all files in the directory
             const files = fs.readdirSync(path.join(__dirname, '../../uploads'));
@@ -144,15 +148,16 @@ class FileControllerClass {
                 }
             });
 
-            const result = await FileService.getData_v2(start, end, largestFile);
+            // Kiểm tra nếu `largestFile` là `undefined`
+            const result = await FileService.getData_v2(req.query, largestFile);
             new SuccessResponse({
                 message: 'Data retrieved successfully',
                 metadata: result,
             }).send(res);
 
         } catch (error) {
-            console.error('Error reading directory:', error);
-            return undefined;
+            console.error('Error:', error);
+            throw new ServerError('Lỗi hệ thống chưa xác định');
         }
     }
 }
